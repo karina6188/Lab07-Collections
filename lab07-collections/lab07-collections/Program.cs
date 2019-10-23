@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace lab07_collections
 {
@@ -6,7 +7,9 @@ namespace lab07_collections
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Library<Book> Library = new Library<Book>();
+            List<Book> BookBag = new List<Book>();
+
         }
     }
 }
