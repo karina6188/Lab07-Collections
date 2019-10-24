@@ -29,11 +29,11 @@ Open the program using Visual Studio and click "Start" button to run this progra
 
 Application Start
 
-![Alt execution capture](/)
+![Alt execution capture](/captures/app_start.JPG)
 
-Using the Application
+Using the Application - View All Books
 
-![Alt execution capture](/)
+![Alt execution capture](/captures/view_books.JPG)
 
 Using the Application
 
