@@ -7,15 +7,17 @@ namespace lab07_collections
     {
         static void Main(string[] args)
         {
-            Library<Book> Library = new Library<Book>();
-            List<Book> BookBag = new List<Book>();
-
+            LoadBooks();
             bool menu = true;
             while (menu)
             {
                 menu = UserInterface();
             }
         }
+
+        public static Library<Book> HogwartLibrary = new Library<Book>();
+        public static List<Book> BookBag = new List<Book>();
+        public static Genre genre = new Genre();
 
         static bool UserInterface()
         {
@@ -71,7 +73,70 @@ namespace lab07_collections
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+                return false;
             }
+        }
+
+        public static void LoadBooks()
+        {
+            Author author1 = new Author("Rolanda", "Hooch");
+            Book book1 = new Book("Flying to The Moon", author1, Genre.Motion);
+
+            Author author2 = new Author("Albus", "Dumbledore");
+            Book book2 = new Book("To Be Who? All You Need To Know About Transfiguration", author2, Genre.Transfiguration);
+
+            Author author3 = new Author("Gilderoy", "Lockhart");
+            Book book3 = new Book("Defence Against the Dark Arts", author3, Genre.DarkMagic);
+
+            Author author4 = new Author("Quirnus", "Quirrell");
+            Book book4 = new Book("Muggles and Wizards Development History", author4, Genre.MuggleStudies);
+
+            Author author5 = new Author("Severus", "Snape");
+            Book book5 = new Book("Potions: 1 Drip 2 Spells", author5, Genre.Potions);
+            Book[] AllBooks = new Book[] { book1, book2, book3, book4, book5 };
+            foreach (Book book in AllBooks)
+            {
+                HogwartLibrary.Add(book);
+            }
+        }
+
+        public static void ViewAllBooks()
+        {
+            foreach (Book book in HogwartLibrary)
+            {
+                Console.WriteLine($"{book.Title} | Author: {book.Author.FirstName} {book.Author.LastName} | Genre: {book.Genre}");
+            }
+        }
+
+        //public static IEnumerable<int> LoadBooks()
+        //{
+        //    int counter = 0;
+
+        //    for (counter = 0; counter < 5; counter++)
+        //    {
+        //        yield return counter;
+        //    }
+        //    yield return counter;
+        //}
+
+        static string AddBooks()
+        {
+            return "";
+        }
+
+        static string BorrowBooks()
+        { 
+            return "";
+        }
+
+        static string ReturnBooks()
+        {
+        return "";
+    }
+
+        static string ViewBookBag()
+        {
+            return "";
         }
     }
 }

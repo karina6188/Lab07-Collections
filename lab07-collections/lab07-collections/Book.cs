@@ -4,10 +4,28 @@ using System.Text;
 
 namespace lab07_collections
 {
-    class Book
+    public enum Genre
     {
-        public Book Title { get; set; }
+        Motion = 1,
+        Transfiguration,
+        DarkMagic,
+        MuggleStudies,
+        Potions
+    }
 
-        public enum Genre {get; set;}
+    public class Book
+    {
+        public string Title { get; set; }
+
+        public Author Author { get; set; }
+
+        public Genre Genre { get; set; }
+
+        public Book(string title, Author author, Genre genre)
+        {
+            Title = title;
+            Author = author;
+            Genre = genre;
+        }
     }
 }

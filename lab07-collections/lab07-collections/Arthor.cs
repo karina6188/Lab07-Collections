@@ -4,10 +4,16 @@ using System.Text;
 
 namespace lab07_collections
 {
-    class Arthor
+    public class Author
     {
-        public Arthor FirstName { get; set; }
+        public string FirstName { get; set; }
 
-        public Arthor LastName { get; set; }
+        public string LastName { get; set; }
+
+        public Author(string firstName, string lastName)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+        }
     }
 }

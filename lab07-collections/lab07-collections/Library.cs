@@ -5,14 +5,25 @@ using System.Text;
 
 namespace lab07_collections
 {
-    class Library<Book> : IEnumerable
+    class Library<T> : IEnumerable
     {
-        private Book[] library = new Book[5];
-        private int currentNumber = 0;
+        private T[] library = new T[5];
+        private int currentIndex = 0;
 
-        public IEnumerator<Book> GetEnumerator()
+        public void Add(T book)
         {
-            for (int i = 0; i < currentNumber; i++)
+            if(currentIndex == library.Length)
+            {
+                Array.Resize(ref library, library.Length + 5 );
+            }
+            library[currentIndex] = book;
+            currentIndex++;
+        }
+
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            for (int i = 0; i < currentIndex; i++)
             {
                 yield return library[i];
             }

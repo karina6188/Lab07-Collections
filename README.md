@@ -56,3 +56,5 @@ Application End
 ## Change Log
 
 1.1: Set up the program and added UserInterface method. - 2019 Oct 23
+
+1.2: 
