@@ -17,7 +17,7 @@ namespace lab07_collections
 
         public static Library<Book> HogwartLibrary = new Library<Book>();
         public static List<Book> BookBag = new List<Book>();
-        public static Genre genre = new Genre();
+        public static Genre bookGenre = new Genre();
 
         static bool UserInterface()
         {
@@ -42,8 +42,14 @@ namespace lab07_collections
                         return true;
 
                     case "2":
-                        AddBooks();
-                        Console.ReadLine();
+                        Console.WriteLine("Please enter information below for the book you want to add into the library.");
+                        Console.WriteLine("Title of the book: ");
+                        string title = Console.ReadLine();
+                        Console.WriteLine("\nAuthor's first name: ");
+                        string firstName = Console.ReadLine();
+                        Console.WriteLine("\nAuthor's last name: ");
+                        string lastName = Console.ReadLine();
+                        AddBooks(title, firstName, lastName);
                         return true;
 
                     case "3":
@@ -93,8 +99,8 @@ namespace lab07_collections
 
             Author author5 = new Author("Severus", "Snape");
             Book book5 = new Book("Potions: 1 Drip 2 Spells", author5, Genre.Potions);
-            Book[] AllBooks = new Book[] { book1, book2, book3, book4, book5 };
-            foreach (Book book in AllBooks)
+            Book[] OriginalBooks = new Book[] { book1, book2, book3, book4, book5 };
+            foreach (Book book in OriginalBooks)
             {
                 HogwartLibrary.Add(book);
             }
@@ -108,6 +114,19 @@ namespace lab07_collections
             }
         }
 
+        static void AddBooks(string title, string firstName, string lastName)
+        {
+            Console.WriteLine("Choose a genre for the book: ");
+            foreach (Genre genreType in bookGenre)
+            {
+
+            }
+
+            Author author = new Author(firstName, lastName);
+            Book book = new Book(title, author, Genre.Motion);
+            HogwartLibrary.Add(book);
+        }
+
         //public static IEnumerable<int> LoadBooks()
         //{
         //    int counter = 0;
@@ -118,11 +137,6 @@ namespace lab07_collections
         //    }
         //    yield return counter;
         //}
-
-        static string AddBooks()
-        {
-            return "";
-        }
 
         static string BorrowBooks()
         { 
