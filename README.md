@@ -57,4 +57,6 @@ Application End
 
 1.1: Set up the program and added UserInterface method. - 2019 Oct 23
 
-1.2: 
+1.2: Add LoadBook() and ViewAllBooks() methods. - 2019 Oct 23
+
+1.3: Add AddBooks() method. - 2019 Oct 23

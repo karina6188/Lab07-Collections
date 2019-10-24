@@ -116,11 +116,11 @@ namespace lab07_collections
 
         static void AddBooks(string title, string firstName, string lastName)
         {
-            Console.WriteLine("Choose a genre for the book: ");
-            foreach (Genre genreType in bookGenre)
-            {
+            //Console.WriteLine("Choose a genre for the book: ");
+            //foreach (Genre genreType in bookGenre)
+            //{
 
-            }
+            //}
 
             Author author = new Author(firstName, lastName);
             Book book = new Book(title, author, Genre.Motion);
