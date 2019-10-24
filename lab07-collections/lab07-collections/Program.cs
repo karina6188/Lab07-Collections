@@ -116,7 +116,8 @@ namespace lab07_collections
 
         static void AddBooks(string title, string firstName, string lastName)
         {
-            //Console.WriteLine("Choose a genre for the book: ");
+            Console.WriteLine("Choose a genre for the book: ");
+            //string genreLists = Enum.GetNames(genre);
             //foreach (Genre genreType in bookGenre)
             //{
 
@@ -127,30 +128,19 @@ namespace lab07_collections
             HogwartLibrary.Add(book);
         }
 
-        //public static IEnumerable<int> LoadBooks()
-        //{
-        //    int counter = 0;
+        static void BorrowBooks()
+        {
 
-        //    for (counter = 0; counter < 5; counter++)
-        //    {
-        //        yield return counter;
-        //    }
-        //    yield return counter;
-        //}
-
-        static string BorrowBooks()
-        { 
-            return "";
         }
 
-        static string ReturnBooks()
+        static void ReturnBooks()
         {
-        return "";
-    }
 
-        static string ViewBookBag()
+        }
+
+        static void ViewBookBag()
         {
-            return "";
+
         }
     }
 }
