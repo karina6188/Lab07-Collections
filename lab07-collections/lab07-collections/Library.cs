@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace lab07_collections
@@ -31,12 +32,44 @@ namespace lab07_collections
             currentIndex++;
         }
 
-        public void Remove(T book)
+        /// <summary>
+        /// Find if the book is inside the library. If yes, remove it from the collection.
+        /// </summary>
+        /// <param name="bookToRemove"></param>
+        public void Remove(T bookToRemove)
         {
+            int bookIndex = -1;
+            for (int i = 0; i < library.Length; i++)
+            {
+                if (library[i].Equals(bookToRemove))
+                {
+                    bookIndex = i;
+                }
+            }
+            //library.Remove(bookIndex) ;
+
+
             // is the item in the collection?
             // find it
             // manipulate array to remove the item
             // eventually send to resize
+        }
+
+        /// <summary>
+        /// Use for loop to loop through library collection and count how many items in there are not null.
+        /// </summary>
+        /// <returns></returns>
+        public int Count()
+        {
+            int totalBooks = 0;
+            for (int i = 0; i < library.Length; i++)
+            {
+                if(library[i] != null)
+                {
+                    totalBooks++;
+                }
+            }
+            return totalBooks;
         }
 
         /// <summary>

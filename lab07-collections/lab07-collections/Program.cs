@@ -38,6 +38,8 @@ namespace lab07_collections
                 {
                     case "1":
                         ViewAllBooks();
+                        int totalBooks = HogwartLibrary.Count();
+                        Console.WriteLine($"There are {totalBooks} books in the library.");
                         Console.ReadLine();
                         return true;
 
@@ -58,11 +60,17 @@ namespace lab07_collections
                         return true;
 
                     case "3":
-                        BorrowBooks();
+                        Console.WriteLine("Please enter title of the book that you want to borrow: ");
+                        ViewAllBooks();
+                        string bookBorrowed = Console.ReadLine();
+                        BorrowBooks(bookBorrowed);
                         return true;
 
                     case "4":
-                        ReturnBooks();
+                        Console.WriteLine("Please enter title of the book that you want to return: ");
+                        ViewBookBag();
+                        string bookReturned = Console.ReadLine();
+                        ReturnBooks(bookReturned);
                         return true;
 
                     case "5":
@@ -187,23 +195,50 @@ namespace lab07_collections
                     return false;
                 default:
                     Console.WriteLine("Please enter a valid selection.");
+                    Console.WriteLine("\n");
                     return true;
             }
         }
 
-        static void BorrowBooks()
+        static void BorrowBooks(string title)
         {
-
+            foreach(Book book in HogwartLibrary)
+            {
+                if(book.Title == title)
+                {
+                    BookBag.Add(book);
+                    //HogwartLibrary.Remove(book);
+                }
+            }
         }
 
-        static void ReturnBooks()
+        static void ReturnBooks(string title)
         {
-
+            foreach (Book book in BookBag)
+            {
+                if (book.Title == title)
+                {
+                    HogwartLibrary.Add(book);
+                    //BookBag.Remove(book);
+                }
+            }
         }
 
         static void ViewBookBag()
         {
-
+            int totalBookBag = 0;
+            foreach (var item in BookBag)
+            {
+                totalBookBag++;
+            }
+            if(totalBookBag == 0)
+            {
+                Console.WriteLine("Your book bag is empty.");
+            }
+            foreach (Book book in BookBag)
+            {
+                Console.WriteLine($"{book.Title} | Author: {book.Author.FirstName} {book.Author.LastName} | Genre: {book.Genre}");
+            }
         }
     }
 }
