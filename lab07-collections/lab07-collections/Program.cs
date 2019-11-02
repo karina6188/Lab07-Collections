@@ -49,7 +49,12 @@ namespace lab07_collections
                         string firstName = Console.ReadLine();
                         Console.WriteLine("\nAuthor's last name: ");
                         string lastName = Console.ReadLine();
-                        AddBooks(title, firstName, lastName);
+                        Console.WriteLine("\n");
+                        bool addBook = true;
+                        while (addBook)
+                        {
+                            addBook = AddBooks(title, firstName, lastName);
+                        }
                         return true;
 
                     case "3":
@@ -114,18 +119,76 @@ namespace lab07_collections
             }
         }
 
-        static void AddBooks(string title, string firstName, string lastName)
+        static bool AddBooks(string title, string firstName, string lastName)
         {
             Console.WriteLine("Choose a genre for the book: ");
-            //string genreLists = Enum.GetNames(genre);
-            //foreach (Genre genreType in bookGenre)
-            //{
-
-            //}
-
-            Author author = new Author(firstName, lastName);
-            Book book = new Book(title, author, Genre.Motion);
-            HogwartLibrary.Add(book);
+            Console.WriteLine("1) Motion");
+            Console.WriteLine("2) Transfiguration");
+            Console.WriteLine("3) Dark Magic");
+            Console.WriteLine("4) Muggle Studies");
+            Console.WriteLine("5) Potions");
+            Console.WriteLine("6) Ancient Runes");
+            Console.WriteLine("7) History Of Magic");
+            Console.WriteLine("8) Charm");
+            Console.WriteLine("9) Care Of Magical Creatures");
+            Console.WriteLine("10) Others");
+            string chooseGenre = Console.ReadLine();
+            switch (chooseGenre)
+            {
+                case "1":
+                    Author author = new Author(firstName, lastName);
+                    Book book = new Book(title, author, Genre.Motion);
+                    HogwartLibrary.Add(book);
+                    return false;
+                case "2":
+                    Author author2 = new Author(firstName, lastName);
+                    Book book2 = new Book(title, author2, Genre.Transfiguration);
+                    HogwartLibrary.Add(book2);
+                    return false;
+                case "3":
+                    Author author3 = new Author(firstName, lastName);
+                    Book book3 = new Book(title, author3, Genre.DarkMagic);
+                    HogwartLibrary.Add(book3);
+                    return false;
+                case "4":
+                    Author author4 = new Author(firstName, lastName);
+                    Book book4 = new Book(title, author4, Genre.MuggleStudies);
+                    HogwartLibrary.Add(book4);
+                    return false;
+                case "5":
+                    Author author5 = new Author(firstName, lastName);
+                    Book book5 = new Book(title, author5, Genre.Potions);
+                    HogwartLibrary.Add(book5);
+                    return false;
+                case "6":
+                    Author author6 = new Author(firstName, lastName);
+                    Book book6 = new Book(title, author6, Genre.AncientRunes);
+                    HogwartLibrary.Add(book6);
+                    return false;
+                case "7":
+                    Author author7 = new Author(firstName, lastName);
+                    Book book7 = new Book(title, author7, Genre.HistoryOfMagic);
+                    HogwartLibrary.Add(book7);
+                    return false;
+                case "8":
+                    Author author8= new Author(firstName, lastName);
+                    Book book8 = new Book(title, author8, Genre.Charm);
+                    HogwartLibrary.Add(book8);
+                    return false;
+                case "9":
+                    Author author9 = new Author(firstName, lastName);
+                    Book book9 = new Book(title, author9, Genre.CareOfMagicalCreatures);
+                    HogwartLibrary.Add(book9);
+                    return false;
+                case "10":
+                    Author author10 = new Author(firstName, lastName);
+                    Book book10 = new Book(title, author10, Genre.Others);
+                    HogwartLibrary.Add(book10);
+                    return false;
+                default:
+                    Console.WriteLine("Please enter a valid selection.");
+                    return true;
+            }
         }
 
         static void BorrowBooks()

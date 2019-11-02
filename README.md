@@ -35,13 +35,13 @@ Using the Application - View All Books
 
 ![Alt execution capture](/captures/view_books.JPG)
 
+Using the Application - Add New Books
+
+![Alt execution capture](/captures/add_books.JPG)
+![Alt execution capture](/captures/add_books2.JPG)
+
 Using the Application
 
-![Alt execution capture](/)
-
-Using the Application
-
-![Alt execution capture](/)
 ![Alt execution capture](/)
 
 Using the Application

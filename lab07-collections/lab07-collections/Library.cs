@@ -33,9 +33,20 @@ namespace lab07_collections
 
         public void Remove(T book)
         {
-
+            // is the item in the collection?
+            // find it
+            // manipulate array to remove the item
+            // eventually send to resize
         }
 
+        /// <summary>
+        /// It does the action one at a time, that means the for loop is
+        /// getting something back one at a time. If you have a return
+        /// statement in this for loop, that means there will be values
+        /// being returned every tume instead of just one final return
+        /// at the end.
+        /// </summary>
+        /// <returns></returns>
         public IEnumerator<T> GetEnumerator()
         {
             for (int i = 0; i < currentIndex; i++)
@@ -44,6 +55,12 @@ namespace lab07_collections
             }
         }
 
+        /// <summary>
+        /// This are legacy codes that come from C# version 1.0.
+        /// However this is conflicting with the later version, so these
+        /// are included here to prevent something from breaking.
+        /// </summary>
+        /// <returns></returns>
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
