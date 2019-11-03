@@ -15,14 +15,14 @@ namespace lab07_collections
             }
         }
 
-        public static Library<Book> HogwartLibrary = new Library<Book>();
+        public static Library<Book> HogwartsLibrary = new Library<Book>();
         public static List<Book> BookBag = new List<Book>();
         public static Genre bookGenre = new Genre();
 
         static bool UserInterface()
         {
             Console.Clear();
-            Console.WriteLine("Welcome to Hogwart's Mystery Library");
+            Console.WriteLine("Welcome to Hogwarts' Mystery Library");
             Console.WriteLine("The books here are only available to wizards not to muggles!");
             Console.WriteLine("Please select one of the options from the menu.");
             Console.WriteLine("1) View all books");
@@ -38,7 +38,8 @@ namespace lab07_collections
                 {
                     case "1":
                         ViewAllBooks();
-                        int totalBooks = HogwartLibrary.Count();
+                        int totalBooks = HogwartsLibrary.Count();
+                        Console.WriteLine("");
                         Console.WriteLine($"There are {totalBooks} books in the library.");
                         Console.ReadLine();
                         return true;
@@ -51,7 +52,7 @@ namespace lab07_collections
                         string firstName = Console.ReadLine();
                         Console.WriteLine("\nAuthor's last name: ");
                         string lastName = Console.ReadLine();
-                        Console.WriteLine("\n");
+                        Console.WriteLine("");
                         bool addBook = true;
                         while (addBook)
                         {
@@ -60,21 +61,21 @@ namespace lab07_collections
                         return true;
 
                     case "3":
-                        Console.WriteLine("Please enter title of the book that you want to borrow: ");
+                        Console.WriteLine("Please enter title of the book that you want to borrow:");
                         ViewAllBooks();
                         string bookBorrowed = Console.ReadLine();
                         BorrowBooks(bookBorrowed);
                         return true;
 
                     case "4":
-                        Console.WriteLine("Please enter title of the book that you want to return: ");
-                        ViewBookBag();
-                        string bookReturned = Console.ReadLine();
-                        ReturnBooks(bookReturned);
+                        Console.WriteLine("Please select the number of the book that you want to return:");
+                        ReturnBooks();
                         return true;
 
                     case "5":
-                        ViewBookBag();
+                        int totalBooksInBag = ViewBookBag();
+                        Console.WriteLine("");
+                        Console.WriteLine($"There are {totalBooksInBag} books in your book bag.");
                         Console.ReadLine();
                         return true;
 
@@ -115,13 +116,13 @@ namespace lab07_collections
             Book[] OriginalBooks = new Book[] { book1, book2, book3, book4, book5 };
             foreach (Book book in OriginalBooks)
             {
-                HogwartLibrary.Add(book);
+                HogwartsLibrary.Add(book);
             }
         }
 
         public static void ViewAllBooks()
         {
-            foreach (Book book in HogwartLibrary)
+            foreach (Book book in HogwartsLibrary)
             {
                 Console.WriteLine($"{book.Title} | Author: {book.Author.FirstName} {book.Author.LastName} | Genre: {book.Genre}");
             }
@@ -146,52 +147,52 @@ namespace lab07_collections
                 case "1":
                     Author author = new Author(firstName, lastName);
                     Book book = new Book(title, author, Genre.Motion);
-                    HogwartLibrary.Add(book);
+                    HogwartsLibrary.Add(book);
                     return false;
                 case "2":
                     Author author2 = new Author(firstName, lastName);
                     Book book2 = new Book(title, author2, Genre.Transfiguration);
-                    HogwartLibrary.Add(book2);
+                    HogwartsLibrary.Add(book2);
                     return false;
                 case "3":
                     Author author3 = new Author(firstName, lastName);
                     Book book3 = new Book(title, author3, Genre.DarkMagic);
-                    HogwartLibrary.Add(book3);
+                    HogwartsLibrary.Add(book3);
                     return false;
                 case "4":
                     Author author4 = new Author(firstName, lastName);
                     Book book4 = new Book(title, author4, Genre.MuggleStudies);
-                    HogwartLibrary.Add(book4);
+                    HogwartsLibrary.Add(book4);
                     return false;
                 case "5":
                     Author author5 = new Author(firstName, lastName);
                     Book book5 = new Book(title, author5, Genre.Potions);
-                    HogwartLibrary.Add(book5);
+                    HogwartsLibrary.Add(book5);
                     return false;
                 case "6":
                     Author author6 = new Author(firstName, lastName);
                     Book book6 = new Book(title, author6, Genre.AncientRunes);
-                    HogwartLibrary.Add(book6);
+                    HogwartsLibrary.Add(book6);
                     return false;
                 case "7":
                     Author author7 = new Author(firstName, lastName);
                     Book book7 = new Book(title, author7, Genre.HistoryOfMagic);
-                    HogwartLibrary.Add(book7);
+                    HogwartsLibrary.Add(book7);
                     return false;
                 case "8":
                     Author author8= new Author(firstName, lastName);
                     Book book8 = new Book(title, author8, Genre.Charm);
-                    HogwartLibrary.Add(book8);
+                    HogwartsLibrary.Add(book8);
                     return false;
                 case "9":
                     Author author9 = new Author(firstName, lastName);
                     Book book9 = new Book(title, author9, Genre.CareOfMagicalCreatures);
-                    HogwartLibrary.Add(book9);
+                    HogwartsLibrary.Add(book9);
                     return false;
                 case "10":
                     Author author10 = new Author(firstName, lastName);
                     Book book10 = new Book(title, author10, Genre.Others);
-                    HogwartLibrary.Add(book10);
+                    HogwartsLibrary.Add(book10);
                     return false;
                 default:
                     Console.WriteLine("Please enter a valid selection.");
@@ -202,29 +203,32 @@ namespace lab07_collections
 
         static void BorrowBooks(string title)
         {
-            foreach(Book book in HogwartLibrary)
-            {
-                if(book.Title == title)
-                {
-                    BookBag.Add(book);
-                    //HogwartLibrary.Remove(book);
-                }
-            }
-        }
-
-        static void ReturnBooks(string title)
-        {
-            foreach (Book book in BookBag)
+            foreach (Book book in HogwartsLibrary)
             {
                 if (book.Title == title)
                 {
-                    HogwartLibrary.Add(book);
-                    //BookBag.Remove(book);
+                    BookBag.Add(book);
+                    HogwartsLibrary.Remove(book);
                 }
-            }
+            }      
         }
 
-        static void ViewBookBag()
+        static void ReturnBooks()
+        {
+            Dictionary<int, Book> bookBagList = new Dictionary<int, Book>();
+            int bookCount = 1;
+            foreach (Book book in BookBag)
+            {
+                Console.WriteLine($"{bookCount}: {book.Title}");
+                bookCount++;
+            }
+            int bookNumber = int.Parse(Console.ReadLine());
+            Book bookReturned = bookBagList.GetValueOrDefault(bookNumber);
+            HogwartsLibrary.Add(bookReturned);
+            BookBag.Remove(bookReturned);
+        }
+
+        static int ViewBookBag()
         {
             int totalBookBag = 0;
             foreach (var item in BookBag)
@@ -235,10 +239,11 @@ namespace lab07_collections
             {
                 Console.WriteLine("Your book bag is empty.");
             }
-            foreach (Book book in BookBag)
+            foreach (var book in BookBag)
             {
                 Console.WriteLine($"{book.Title} | Author: {book.Author.FirstName} {book.Author.LastName} | Genre: {book.Genre}");
             }
+            return totalBookBag;
         }
     }
 }

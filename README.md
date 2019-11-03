@@ -48,7 +48,6 @@ Using the Application - Borrow a Book and View Book Bag
 Using the Application - Return a Book
 
 ![Alt execution capture](/captures/return_books2.JPG)
-![Alt execution capture](/captures/view_book_bag.JPG)
 
 ## Change Log
 
@@ -66,4 +65,4 @@ Using the Application - Return a Book
 
 1.7: Add ViewBookBag() method to show all the books in the book bag. - 2019 Nov 02
 
-1.8: 
+1.8: Add Remove() method in Library< T > class. - 2019 Nov 02

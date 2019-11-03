@@ -33,43 +33,37 @@ namespace lab07_collections
         }
 
         /// <summary>
-        /// Find if the book is inside the library. If yes, remove it from the collection.
+        /// 
         /// </summary>
         /// <param name="bookToRemove"></param>
-        public void Remove(T bookToRemove)
+        public bool Remove(Book bookToRemove)
         {
-            int bookIndex = -1;
-            for (int i = 0; i < library.Length; i++)
+            for (int i = 0; i < currentIndex; i++)
             {
-                if (library[i].Equals(bookToRemove))
+                if (bookToRemove.Equals(library[i]))
                 {
-                    bookIndex = i;
+                    for (int x = i; x < currentIndex; x++)
+                    {
+                        library[x] = library[x + 1];
+                    }
+                    currentIndex = currentIndex - 1;
+                    if (currentIndex < library.Length - 5)
+                    {
+                        Array.Resize(ref library, library.Length - 5);
+                    }
+                    return true;
                 }
             }
-            //library.Remove(bookIndex) ;
-
-
-            // is the item in the collection?
-            // find it
-            // manipulate array to remove the item
-            // eventually send to resize
+            return false;
         }
 
         /// <summary>
-        /// Use for loop to loop through library collection and count how many items in there are not null.
+        /// Return currentIndex values that shows how many books are there.
         /// </summary>
         /// <returns></returns>
         public int Count()
         {
-            int totalBooks = 0;
-            for (int i = 0; i < library.Length; i++)
-            {
-                if(library[i] != null)
-                {
-                    totalBooks++;
-                }
-            }
-            return totalBooks;
+            return currentIndex;
         }
 
         /// <summary>
