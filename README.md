@@ -47,7 +47,7 @@ Using the Application - Borrow a Book and View Book Bag
 
 Using the Application - Return a Book
 
-![Alt execution capture](/captures/return_books2.JPG)
+![Alt execution capture](/captures/return_books.JPG)
 
 ## Change Log
 
