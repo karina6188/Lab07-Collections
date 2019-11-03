@@ -6,8 +6,4 @@
     <RootNamespace>lab07_collections</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\CollectionsTests\CollectionsTests.csproj" />
-  </ItemGroup>
-
 </Project>

@@ -66,3 +66,5 @@ Using the Application - Return a Book
 1.7: Add ViewBookBag() method to show all the books in the book bag. - 2019 Nov 02
 
 1.8: Add Remove() method in Library< T > class. - 2019 Nov 02
+
+1.9: Add unit testing. Pass all the tests. - 2019 Nov 02

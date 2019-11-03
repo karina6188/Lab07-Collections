@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace lab07_collections
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -202,7 +202,7 @@ namespace lab07_collections
                     HogwartsLibrary.Add(book7);
                     return false;
                 case "8":
-                    Author author8= new Author(firstName, lastName);
+                    Author author8 = new Author(firstName, lastName);
                     Book book8 = new Book(title, author8, Genre.Charm);
                     HogwartsLibrary.Add(book8);
                     return false;
@@ -238,7 +238,7 @@ namespace lab07_collections
                     BookBag.Add(book);
                     HogwartsLibrary.Remove(book);
                 }
-            }      
+            }
         }
 
         /// <summary>
@@ -258,8 +258,8 @@ namespace lab07_collections
             string bookNumber = Console.ReadLine();
             int.TryParse(bookNumber, out int selection);
             bookBagList.TryGetValue(selection, out Book bookReturned);
-            HogwartsLibrary.Add(bookReturned);
             BookBag.Remove(bookReturned);
+            HogwartsLibrary.Add(bookReturned);
         }
 
         /// <summary>
@@ -275,7 +275,7 @@ namespace lab07_collections
             {
                 totalBookBag++;
             }
-            if(totalBookBag == 0)
+            if (totalBookBag == 0)
             {
                 Console.WriteLine("Your book bag is empty.");
             }

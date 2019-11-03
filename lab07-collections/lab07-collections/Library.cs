@@ -6,7 +6,7 @@ using System.Text;
 
 namespace lab07_collections
 {
-    class Library<T> : IEnumerable
+    public class Library<T> : IEnumerable
     {
         /// <summary>
         /// Create a generic type array that takes 10 items.
@@ -22,7 +22,7 @@ namespace lab07_collections
         /// book to be at the index position inside library array. 
         /// </summary>
         /// <param name="book"></param>
-        public void Add(T book)
+        public int Add(T book)
         {
             if(currentIndex == library.Length)
             {
@@ -30,6 +30,7 @@ namespace lab07_collections
             }
             library[currentIndex] = book;
             currentIndex++;
+            return currentIndex;
         }
 
         /// <summary>
