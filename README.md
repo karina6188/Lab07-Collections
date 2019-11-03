@@ -35,23 +35,19 @@ Using the Application - View All Books
 
 ![Alt execution capture](/captures/view_books.JPG)
 
-Using the Application
+Using the Application - Add New Books
 
-![Alt execution capture](/)
+![Alt execution capture](/captures/add_books.JPG)
+![Alt execution capture](/captures/add_books2.JPG)
 
-Using the Application
+Using the Application - Borrow a Book and View Book Bag
 
-![Alt execution capture](/)
-![Alt execution capture](/)
+![Alt execution capture](/captures/borrow_books.JPG)
+![Alt execution capture](/captures/borrow_books2.JPG)
 
-Using the Application
+Using the Application - Return a Book
 
-![Alt execution capture](/)
-![Alt execution capture](/)
-
-Application End
-
-![Alt execution capture](/)
+![Alt execution capture](/captures/return_books.JPG)
 
 ## Change Log
 
@@ -60,3 +56,15 @@ Application End
 1.2: Add LoadBook() and ViewAllBooks() methods. - 2019 Oct 23
 
 1.3: Add AddBooks() method. - 2019 Oct 23
+
+1.4: Add Count() method in Library< T > class. - 2019 Nov 02
+
+1.5: Add BorrowBooks() method to remove books from library and add to book bag. - 2019 Nov 02
+
+1.6: Add ReturnBooks() method and Dictionary<int, Book>. - 2019 Nov 02
+
+1.7: Add ViewBookBag() method to show all the books in the book bag. - 2019 Nov 02
+
+1.8: Add Remove() method in Library< T > class. - 2019 Nov 02
+
+1.9: Add unit testing. Pass all the tests. - 2019 Nov 02

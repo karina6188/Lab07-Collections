@@ -10,7 +10,12 @@ namespace lab07_collections
         Transfiguration,
         DarkMagic,
         MuggleStudies,
-        Potions
+        Potions,
+        AncientRunes,
+        HistoryOfMagic,
+        Charm,
+        CareOfMagicalCreatures,
+        Others
     }
 
     public class Book
