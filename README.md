@@ -61,7 +61,7 @@ Using the Application - Return a Book
 
 1.5: Add BorrowBooks() method to remove books from library and add to book bag. - 2019 Nov 02
 
-1.6: Add ReturnBooks() method to remove books from book bag and add to library. - 2019 Nov 02
+1.6: Add ReturnBooks() method and Dictionary<int, Book>. - 2019 Nov 02
 
 1.7: Add ViewBookBag() method to show all the books in the book bag. - 2019 Nov 02
 

@@ -19,6 +19,11 @@ namespace lab07_collections
         public static List<Book> BookBag = new List<Book>();
         public static Genre bookGenre = new Genre();
 
+        /// <summary>
+        /// List out the menu for the user to select.
+        /// Keep displaying the menu until one of the selections are made or exit.
+        /// </summary>
+        /// <returns></returns>
         static bool UserInterface()
         {
             Console.Clear();
@@ -97,6 +102,11 @@ namespace lab07_collections
             }
         }
 
+        /// <summary>
+        /// Create object instances of Book and create Author instances to construct author's first and last name.
+        /// Add all the books into a Book array.
+        /// User foreach to loop through all the books in the Book array and add into HogwartsLibrary.
+        /// </summary>
         public static void LoadBooks()
         {
             Author author1 = new Author("Rolanda", "Hooch");
@@ -120,6 +130,9 @@ namespace lab07_collections
             }
         }
 
+        /// <summary>
+        /// Use foreach to loop through all the books in HogwartsLibrary and list out the book title, author, and genre.
+        /// </summary>
         public static void ViewAllBooks()
         {
             foreach (Book book in HogwartsLibrary)
@@ -128,6 +141,15 @@ namespace lab07_collections
             }
         }
 
+        /// <summary>
+        /// List out all the genres and take user's input.
+        /// Use switch statement to add the book to the corresponding genre category.
+        /// Add the book to HogwartsLibrary.
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="firstName"></param>
+        /// <param name="lastName"></param>
+        /// <returns></returns>
         static bool AddBooks(string title, string firstName, string lastName)
         {
             Console.WriteLine("Choose a genre for the book: ");
@@ -201,6 +223,12 @@ namespace lab07_collections
             }
         }
 
+        /// <summary>
+        /// Take user's input on the book title which is to be borrowed.
+        /// Loop through HogwartsLibrary to find the book.
+        /// Add this book to BookBag and remove it from HogwartsLibrary.
+        /// </summary>
+        /// <param name="title"></param>
         static void BorrowBooks(string title)
         {
             foreach (Book book in HogwartsLibrary)
@@ -213,21 +241,33 @@ namespace lab07_collections
             }      
         }
 
+        /// <summary>
+        /// Use Dictionary<int, Book> to assign numbers to each book in BookBag.
+        /// Take user's selection on which book to return, use TryGetValue method to get the book object information.
+        /// Add the book back to HogwartsLibrary and remove it from BookBag.
+        /// </summary>
         static void ReturnBooks()
         {
             Dictionary<int, Book> bookBagList = new Dictionary<int, Book>();
             int bookCount = 1;
             foreach (Book book in BookBag)
             {
-                Console.WriteLine($"{bookCount}: {book.Title}");
+                Console.WriteLine($"{bookCount}: {book.Title} | {book.Author.FirstName} {book.Author.LastName} | {book.Genre}");
                 bookCount++;
             }
-            int bookNumber = int.Parse(Console.ReadLine());
-            Book bookReturned = bookBagList.GetValueOrDefault(bookNumber);
+            string bookNumber = Console.ReadLine();
+            int.TryParse(bookNumber, out int selection);
+            bookBagList.TryGetValue(selection, out Book bookReturned);
             HogwartsLibrary.Add(bookReturned);
             BookBag.Remove(bookReturned);
         }
 
+        /// <summary>
+        /// Loop through BookBag and count how many books are in there.
+        /// If there is no book in BookBag, let the user know.
+        /// If there are books in BookBag, use foreach to print out all the books and return how many books are in BookBag.
+        /// </summary>
+        /// <returns></returns>
         static int ViewBookBag()
         {
             int totalBookBag = 0;

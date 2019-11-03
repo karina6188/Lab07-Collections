@@ -33,7 +33,9 @@ namespace lab07_collections
         }
 
         /// <summary>
-        /// 
+        /// Loop through the books inside the library and find the book to be removed.
+        /// If the book exists, get the book's index number and reassign the next book in the library to take the spot of the removed book's index number. Do this until all the books are moved one index number ahead.
+        /// Check if the library has enough or too many extra spaces for books. If the library has more than 5 more available spaces for books, resize it to be 5 spots less. Otherwise keep the current library length.
         /// </summary>
         /// <param name="bookToRemove"></param>
         public bool Remove(Book bookToRemove)
