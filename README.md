@@ -6,7 +6,7 @@ Generic Collections
 Author: Karina Chen
 
 ## Description
-This is a C# console application that 
+This is a C# console application that allows a user to borrow books from the libray and returns them back.
 
 ## Getting Started
 Clone this repository to your local machine.

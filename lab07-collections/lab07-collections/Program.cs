@@ -19,6 +19,7 @@ namespace lab07_collections
         public static List<Book> BookBag = new List<Book>();
         public static Genre bookGenre = new Genre();
 
+        #region UserInterface()
         /// <summary>
         /// List out the menu for the user to select.
         /// Keep displaying the menu until one of the selections are made or exit.
@@ -42,27 +43,41 @@ namespace lab07_collections
                 switch (selection)
                 {
                     case "1":
-                        ViewAllBooks();
                         int totalBooks = HogwartsLibrary.Count();
-                        Console.WriteLine("");
-                        Console.WriteLine($"There are {totalBooks} books in the library.");
+                        Console.WriteLine($"========= There are {totalBooks} books in the library =========");
+                        ViewAllBooks();
                         Console.ReadLine();
                         return true;
 
                     case "2":
                         Console.WriteLine("Please enter information below for the book you want to add into the library.");
-                        Console.WriteLine("Title of the book: ");
-                        string title = Console.ReadLine();
-                        Console.WriteLine("\nAuthor's first name: ");
-                        string firstName = Console.ReadLine();
-                        Console.WriteLine("\nAuthor's last name: ");
-                        string lastName = Console.ReadLine();
-                        Console.WriteLine("");
-                        bool addBook = true;
-                        while (addBook)
+                        while (true)
                         {
-                            addBook = AddBooks(title, firstName, lastName);
+                            Console.WriteLine("Title of the book: ");
+                            string title = Console.ReadLine();
+                            Console.WriteLine("\nAuthor's first name: ");
+                            string firstName = Console.ReadLine();
+                            Console.WriteLine("\nAuthor's last name: ");
+                            string lastName = Console.ReadLine();
+                            Console.WriteLine("");
+                            if (title.Length <= 0 || firstName.Length <= 0 || lastName.Length <= 0)
+                            {
+                                if (title.Length <= 0) Console.WriteLine("Your book title is empty. Please try again.");
+                                if (firstName.Length <= 0) Console.WriteLine("Your author's first name is empty. Please try again.");
+                                if (lastName.Length <= 0) Console.WriteLine("Your author's last name is empty. Please try again.");
+                                Console.WriteLine();
+                            }
+                            else
+                            {
+                                bool addBook = true;
+                                while (addBook)
+                                {
+                                    addBook = AddBooks(title, firstName, lastName);
+                                }
+                                break;
+                            }
                         }
+                        Console.WriteLine("The book has been added into the library.");
                         return true;
 
                     case "3":
@@ -73,7 +88,6 @@ namespace lab07_collections
                         return true;
 
                     case "4":
-                        Console.WriteLine("Please select the number of the book that you want to return:");
                         ReturnBooks();
                         return true;
 
@@ -101,7 +115,9 @@ namespace lab07_collections
                 return false;
             }
         }
+        #endregion
 
+        #region LoadBooks()
         /// <summary>
         /// Create object instances of Book and create Author instances to construct author's first and last name.
         /// Add all the books into a Book array.
@@ -113,7 +129,7 @@ namespace lab07_collections
             Book book1 = new Book("Flying to The Moon", author1, Genre.Motion);
 
             Author author2 = new Author("Albus", "Dumbledore");
-            Book book2 = new Book("To Be Who? All You Need To Know About Transfiguration", author2, Genre.Transfiguration);
+            Book book2 = new Book("All You Need To Know About Transfiguration", author2, Genre.Transfiguration);
 
             Author author3 = new Author("Gilderoy", "Lockhart");
             Book book3 = new Book("Defence Against the Dark Arts", author3, Genre.DarkMagic);
@@ -129,7 +145,9 @@ namespace lab07_collections
                 HogwartsLibrary.Add(book);
             }
         }
+        #endregion
 
+        #region ViewAllBooks()
         /// <summary>
         /// Use foreach to loop through all the books in HogwartsLibrary and list out the book title, author, and genre.
         /// </summary>
@@ -140,7 +158,9 @@ namespace lab07_collections
                 Console.WriteLine($"{book.Title} | Author: {book.Author.FirstName} {book.Author.LastName} | Genre: {book.Genre}");
             }
         }
+        #endregion
 
+        #region AddBooks()
         /// <summary>
         /// List out all the genres and take user's input.
         /// Use switch statement to add the book to the corresponding genre category.
@@ -222,7 +242,9 @@ namespace lab07_collections
                     return true;
             }
         }
+        #endregion
 
+        #region BorrowBooks()
         /// <summary>
         /// Take user's input on the book title which is to be borrowed.
         /// Loop through HogwartsLibrary to find the book.
@@ -240,14 +262,24 @@ namespace lab07_collections
                 }
             }
         }
+        #endregion
 
         /// <summary>
         /// Use Dictionary<int, Book> to assign numbers to each book in BookBag.
         /// Take user's selection on which book to return, use TryGetValue method to get the book object information.
         /// Add the book back to HogwartsLibrary and remove it from BookBag.
         /// </summary>
-        static void ReturnBooks()
+        static string ReturnBooks()
         {
+            if (BookBag.Count == 0)
+            {
+                Console.WriteLine("You don't have any books in your book bag to be returned.");
+                Console.ReadLine();
+                return "";
+            }
+            Console.WriteLine("Please select the number of the book that you want to return:");
+
+
             Dictionary<int, Book> bookBagList = new Dictionary<int, Book>();
             int bookCount = 1;
             foreach (Book book in BookBag)
@@ -260,8 +292,10 @@ namespace lab07_collections
             bookBagList.TryGetValue(selection, out Book bookReturned);
             BookBag.Remove(bookReturned);
             HogwartsLibrary.Add(bookReturned);
+            return "X";
         }
 
+        #region ViewBookBag()
         /// <summary>
         /// Loop through BookBag and count how many books are in there.
         /// If there is no book in BookBag, let the user know.
@@ -285,5 +319,6 @@ namespace lab07_collections
             }
             return totalBookBag;
         }
+        #endregion
     }
 }
