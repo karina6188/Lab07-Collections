@@ -88,7 +88,6 @@ namespace lab07_collections
                         return true;
 
                     case "4":
-                        Console.WriteLine("Please select the number of the book that you want to return:");
                         ReturnBooks();
                         return true;
 
@@ -270,8 +269,17 @@ namespace lab07_collections
         /// Take user's selection on which book to return, use TryGetValue method to get the book object information.
         /// Add the book back to HogwartsLibrary and remove it from BookBag.
         /// </summary>
-        static void ReturnBooks()
+        static string ReturnBooks()
         {
+            if (BookBag.Count == 0)
+            {
+                Console.WriteLine("You don't have any books in your book bag to be returned.");
+                Console.ReadLine();
+                return "";
+            }
+            Console.WriteLine("Please select the number of the book that you want to return:");
+
+
             Dictionary<int, Book> bookBagList = new Dictionary<int, Book>();
             int bookCount = 1;
             foreach (Book book in BookBag)
@@ -284,6 +292,7 @@ namespace lab07_collections
             bookBagList.TryGetValue(selection, out Book bookReturned);
             BookBag.Remove(bookReturned);
             HogwartsLibrary.Add(bookReturned);
+            return "X";
         }
 
         #region ViewBookBag()
